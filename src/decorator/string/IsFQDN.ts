@@ -2,6 +2,7 @@ import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
 import isFqdnValidator from 'validator/lib/isFQDN';
 import ValidatorJS from 'validator';
+import Messages from '../../utils/messages';
 
 export const IS_FQDN = 'isFqdn';
 
@@ -24,10 +25,7 @@ export function IsFQDN(options?: ValidatorJS.IsFQDNOptions, validationOptions?: 
       constraints: [options],
       validator: {
         validate: (value, args): boolean => isFQDN(value, args.constraints[0]),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be a valid domain name',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.validDomainName, validationOptions),
       },
     },
     validationOptions

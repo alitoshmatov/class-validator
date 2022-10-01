@@ -1,5 +1,6 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
+import Messages from '../../utils/messages';
 
 export const IS_ARRAY = 'isArray';
 
@@ -19,7 +20,7 @@ export function IsArray(validationOptions?: ValidationOptions): PropertyDecorato
       name: IS_ARRAY,
       validator: {
         validate: (value, args): boolean => isArray(value),
-        defaultMessage: buildMessage(eachPrefix => eachPrefix + '$property must be an array', validationOptions),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.array, validationOptions),
       },
     },
     validationOptions

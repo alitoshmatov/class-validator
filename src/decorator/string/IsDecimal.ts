@@ -2,6 +2,7 @@ import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
 import isDecimalValidator from 'validator/lib/isDecimal';
 import ValidatorJS from 'validator';
+import Messages from '../../utils/messages';
 
 export const IS_DECIMAL = 'isDecimal';
 
@@ -27,10 +28,7 @@ export function IsDecimal(
       constraints: [options],
       validator: {
         validate: (value, args): boolean => isDecimal(value, args.constraints[0]),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property is not a valid decimal number.',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.notValidDecimalNumber, validationOptions),
       },
     },
     validationOptions

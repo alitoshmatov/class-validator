@@ -1,6 +1,7 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
 import isBooleanValidator from 'validator/lib/isBoolean';
+import Messages from '../../utils/messages';
 
 export const IS_BOOLEAN_STRING = 'isBooleanString';
 
@@ -22,10 +23,7 @@ export function IsBooleanString(validationOptions?: ValidationOptions): Property
       name: IS_BOOLEAN_STRING,
       validator: {
         validate: (value, args): boolean => isBooleanString(value),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be a boolean string',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.booleanString, validationOptions),
       },
     },
     validationOptions

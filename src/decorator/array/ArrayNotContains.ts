@@ -1,5 +1,6 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
+import Messages from '../../utils/messages';
 
 export const ARRAY_NOT_CONTAINS = 'arrayNotContains';
 
@@ -24,10 +25,7 @@ export function ArrayNotContains(values: any[], validationOptions?: ValidationOp
       constraints: [values],
       validator: {
         validate: (value, args): boolean => arrayNotContains(value, args.constraints[0]),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property should not contain $constraint1 values',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.notContainValues, validationOptions),
       },
     },
     validationOptions

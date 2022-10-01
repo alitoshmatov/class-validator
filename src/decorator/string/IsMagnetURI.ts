@@ -1,6 +1,7 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
 import isMagnetURIValidator from 'validator/lib/isMagnetURI';
+import Messages from '../../utils/messages';
 
 export const IS_MAGNET_URI = 'isMagnetURI';
 
@@ -22,10 +23,7 @@ export function IsMagnetURI(validationOptions?: ValidationOptions): PropertyDeco
       name: IS_MAGNET_URI,
       validator: {
         validate: (value, args): boolean => isMagnetURI(value),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be magnet uri format',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.magnetUriFormat, validationOptions),
       },
     },
     validationOptions

@@ -1,6 +1,7 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
 import isHexColorValidator from 'validator/lib/isHexColor';
+import Messages from '../../utils/messages';
 
 export const IS_HEX_COLOR = 'isHexColor';
 
@@ -22,10 +23,7 @@ export function IsHexColor(validationOptions?: ValidationOptions): PropertyDecor
       name: IS_HEX_COLOR,
       validator: {
         validate: (value, args): boolean => isHexColor(value),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be a hexadecimal color',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.hexColor, validationOptions),
       },
     },
     validationOptions

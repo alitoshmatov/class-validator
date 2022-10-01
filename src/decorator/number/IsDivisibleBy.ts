@@ -1,6 +1,7 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
 import isDivisibleByValidator from 'validator/lib/isDivisibleBy';
+import Messages from '../../utils/messages';
 
 export const IS_DIVISIBLE_BY = 'isDivisibleBy';
 
@@ -21,10 +22,7 @@ export function IsDivisibleBy(num: number, validationOptions?: ValidationOptions
       constraints: [num],
       validator: {
         validate: (value, args): boolean => isDivisibleBy(value, args.constraints[0]),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be divisible by $constraint1',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.divisibleBy, validationOptions),
       },
     },
     validationOptions

@@ -1,5 +1,6 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
+import Messages from '../../utils/messages';
 
 export const IS_IN = 'isIn';
 
@@ -20,10 +21,7 @@ export function IsIn(values: readonly any[], validationOptions?: ValidationOptio
       constraints: [values],
       validator: {
         validate: (value, args): boolean => isIn(value, args.constraints[0]),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be one of the following values: $constraint1',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.followingValues, validationOptions),
       },
     },
     validationOptions

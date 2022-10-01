@@ -1,6 +1,7 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from './ValidateBy';
 import isLatLongValidator from 'validator/lib/isLatLong';
+import Messages from '../../utils/messages';
 
 export const IS_LATLONG = 'isLatLong';
 
@@ -20,10 +21,7 @@ export function IsLatLong(validationOptions?: ValidationOptions): PropertyDecora
       name: IS_LATLONG,
       validator: {
         validate: (value, args): boolean => isLatLong(value),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be a latitude,longitude string',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.latitudeLongitudeString, validationOptions),
       },
     },
     validationOptions

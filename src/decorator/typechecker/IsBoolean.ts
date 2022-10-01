@@ -1,5 +1,6 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
+import Messages from '../../utils/messages';
 
 export const IS_BOOLEAN = 'isBoolean';
 
@@ -19,7 +20,7 @@ export function IsBoolean(validationOptions?: ValidationOptions): PropertyDecora
       name: IS_BOOLEAN,
       validator: {
         validate: (value, args): boolean => isBoolean(value),
-        defaultMessage: buildMessage(eachPrefix => eachPrefix + '$property must be a boolean value', validationOptions),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.booleanValue, validationOptions),
       },
     },
     validationOptions

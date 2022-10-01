@@ -1,6 +1,7 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from './ValidateBy';
 import { ValidationTypes } from '../../validation/ValidationTypes';
+import Messages from '../../utils/messages';
 
 // isDefined is (yet) a special case
 export const IS_DEFINED = ValidationTypes.IS_DEFINED;
@@ -21,10 +22,7 @@ export function IsDefined(validationOptions?: ValidationOptions): PropertyDecora
       name: IS_DEFINED,
       validator: {
         validate: (value): boolean => isDefined(value),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property should not be null or undefined',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.notBeNullOrUndefined, validationOptions),
       },
     },
     validationOptions

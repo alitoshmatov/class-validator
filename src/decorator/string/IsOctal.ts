@@ -1,6 +1,7 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
 import isOctalValidator from 'validator/lib/isOctal';
+import Messages from '../../utils/messages';
 
 export const IS_OCTAL = 'isOctal';
 
@@ -22,10 +23,7 @@ export function IsOctal(validationOptions?: ValidationOptions): PropertyDecorato
       name: IS_OCTAL,
       validator: {
         validate: (value, args): boolean => isOctal(value),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be valid octal number',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.octalNumber, validationOptions),
       },
     },
     validationOptions

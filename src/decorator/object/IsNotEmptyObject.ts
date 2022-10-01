@@ -1,6 +1,7 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
 import { isObject } from '../typechecker/IsObject';
+import Messages from '../../utils/messages';
 
 export const IS_NOT_EMPTY_OBJECT = 'isNotEmptyObject';
 
@@ -40,10 +41,7 @@ export function IsNotEmptyObject(
       constraints: [options],
       validator: {
         validate: (value, args): boolean => isNotEmptyObject(value, args.constraints[0]),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be a non-empty object',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages, validationOptions),
       },
     },
     validationOptions

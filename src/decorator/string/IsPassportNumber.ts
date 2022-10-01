@@ -1,6 +1,7 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
 import isPassportNumberValidator from 'validator/lib/isPassportNumber';
+import Messages from '../../utils/messages';
 
 export const IS_PASSPORT_NUMBER = 'isPassportNumber';
 
@@ -23,10 +24,7 @@ export function IsPassportNumber(countryCode: string, validationOptions?: Valida
       constraints: [countryCode],
       validator: {
         validate: (value, args): boolean => isPassportNumber(value, args.constraints[0]),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be valid passport number',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.passportNumber, validationOptions),
       },
     },
     validationOptions

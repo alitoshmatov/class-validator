@@ -1,6 +1,7 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
 import isLowercaseValidator from 'validator/lib/isLowercase';
+import Messages from '../../utils/messages';
 
 export const IS_LOWERCASE = 'isLowercase';
 
@@ -22,10 +23,7 @@ export function IsLowercase(validationOptions?: ValidationOptions): PropertyDeco
       name: IS_LOWERCASE,
       validator: {
         validate: (value, args): boolean => isLowercase(value),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be a lowercase string',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.lowercaseString, validationOptions),
       },
     },
     validationOptions

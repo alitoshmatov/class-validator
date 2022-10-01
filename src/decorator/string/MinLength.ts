@@ -1,6 +1,7 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
 import isLengthValidator from 'validator/lib/isLength';
+import Messages from '../../utils/messages';
 
 export const MIN_LENGTH = 'minLength';
 
@@ -23,10 +24,7 @@ export function MinLength(min: number, validationOptions?: ValidationOptions): P
       constraints: [min],
       validator: {
         validate: (value, args): boolean => minLength(value, args.constraints[0]),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be longer than or equal to $constraint1 characters',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.longerThanOrEqualTo, validationOptions),
       },
     },
     validationOptions

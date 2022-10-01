@@ -1,5 +1,6 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
+import Messages from '../../utils/messages';
 
 export const IS_ENUM = 'isEnum';
 
@@ -21,10 +22,7 @@ export function IsEnum(entity: object, validationOptions?: ValidationOptions): P
       constraints: [entity],
       validator: {
         validate: (value, args): boolean => isEnum(value, args.constraints[0]),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + '$property must be a valid enum value',
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.validEnumValue, validationOptions),
       },
     },
     validationOptions

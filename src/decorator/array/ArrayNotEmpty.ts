@@ -1,5 +1,6 @@
 import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
+import Messages from '../../utils/messages';
 
 export const ARRAY_NOT_EMPTY = 'arrayNotEmpty';
 
@@ -21,7 +22,7 @@ export function ArrayNotEmpty(validationOptions?: ValidationOptions): PropertyDe
       name: ARRAY_NOT_EMPTY,
       validator: {
         validate: (value, args): boolean => arrayNotEmpty(value),
-        defaultMessage: buildMessage(eachPrefix => eachPrefix + '$property should not be empty', validationOptions),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.notBeEmpty, validationOptions),
       },
     },
     validationOptions
