@@ -2,7 +2,6 @@ import { ValidationOptions } from '../ValidationOptions';
 import { buildMessage, ValidateBy } from '../common/ValidateBy';
 import Messages from '../../utils/messages';
 
-
 export const ARRAY_MIN_SIZE = 'arrayMinSize';
 
 /**

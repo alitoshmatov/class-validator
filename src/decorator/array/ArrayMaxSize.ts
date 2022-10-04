@@ -23,10 +23,7 @@ export function ArrayMaxSize(max: number, validationOptions?: ValidationOptions)
       constraints: [max],
       validator: {
         validate: (value, args): boolean => arrayMaxSize(value, args.constraints[0]),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + Messages.notMoreThanElements,
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.notMoreThanElements, validationOptions),
       },
     },
     validationOptions

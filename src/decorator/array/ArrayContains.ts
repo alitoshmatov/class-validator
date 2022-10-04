@@ -25,10 +25,7 @@ export function ArrayContains(values: any[], validationOptions?: ValidationOptio
       constraints: [values],
       validator: {
         validate: (value, args): boolean => arrayContains(value, args.constraints[0]),
-        defaultMessage: buildMessage(
-          eachPrefix => eachPrefix + Messages.containValues,
-          validationOptions
-        ),
+        defaultMessage: buildMessage(eachPrefix => eachPrefix + Messages.containValues, validationOptions),
       },
     },
     validationOptions
